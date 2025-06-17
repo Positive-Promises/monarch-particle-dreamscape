@@ -144,7 +144,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
       {/* Enhanced background with multiple gradients */}
       <div className="absolute inset-0 opacity-40">
         <div className="absolute inset-0 bg-gradient-radial from-gold-500/10 via-transparent to-transparent"></div>

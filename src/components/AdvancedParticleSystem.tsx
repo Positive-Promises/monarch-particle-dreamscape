@@ -292,7 +292,7 @@ const AdvancedParticleSystem = forwardRef<any, AdvancedParticleSystemProps>(({ p
     }
   }, [easeOutExpo]);
 
-  // Update floating animation
+  // Update floating animation with optimized spring effect
   const updateFloating = useCallback(() => {
     const time = Date.now() / 1000;
     
@@ -308,13 +308,13 @@ const AdvancedParticleSystem = forwardRef<any, AdvancedParticleSystemProps>(({ p
       particle.element.setAttribute('cx', totalX.toString());
       particle.element.setAttribute('cy', totalY.toString());
       
-      // Decay mouse offset
-      particle.mouseOffsetX *= 0.92;
-      particle.mouseOffsetY *= 0.92;
+      // Optimized spring decay - much faster return
+      particle.mouseOffsetX *= 0.85;
+      particle.mouseOffsetY *= 0.85;
     });
   }, [particles]);
 
-  // Handle mouse interaction
+  // Handle mouse interaction with enhanced spring effect
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!svgRef.current) return;
     
@@ -343,13 +343,14 @@ const AdvancedParticleSystem = forwardRef<any, AdvancedParticleSystemProps>(({ p
           const centerDirX = toCenterX / (centerDist || 1);
           const centerDirY = toCenterY / (centerDist || 1);
           
-          particle.mouseOffsetX = (-dx * force * 15) + (centerDirX * force * 6);
-          particle.mouseOffsetY = (-dy * force * 15) + (centerDirY * force * 6);
+          // Enhanced spring force for quicker response
+          particle.mouseOffsetX = (-dx * force * 18) + (centerDirX * force * 8);
+          particle.mouseOffsetY = (-dy * force * 18) + (centerDirY * force * 8);
           
           gsap.to(particle.element, {
             attr: { opacity: 1 },
             scale: 1.2,
-            duration: 0.3,
+            duration: 0.2,
             ease: "power2.out",
             yoyo: true,
             repeat: 1
