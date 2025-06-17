@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -67,6 +66,9 @@ export default {
 					400: '#fbbf24',
 					500: '#f59e0b',
 					600: '#d97706',
+				},
+				red: {
+					900: '#7f1d1d',
 				}
 			},
 			borderRadius: {
@@ -90,14 +92,35 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'gradient-shift': {
+					'0%, 100%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+					'50%': { opacity: '1', transform: 'scale(1.05)' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-10px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'gradient-shift': 'gradient-shift 3s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+				'float': 'float 3s ease-in-out infinite'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+			},
+			backgroundSize: {
+				'size-200': '200% 200%',
+			},
+			backdropBlur: {
+				'xs': '2px',
 			}
 		}
 	},
